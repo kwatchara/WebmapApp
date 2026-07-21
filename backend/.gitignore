@@ -1,3 +1,6 @@
+# Built frontend copied from frontend/dist on each `vite build`
+webroot/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
