@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="MapLibre GL">
+  <path d="M8 16 24 10 40 16 56 10v38l-16 6-16-6-16 6z" fill="#295daa"/>
+  <path d="M24 10v38M40 16v38" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.6"/>
+  <path d="M8 28h48M8 40h48" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.35"/>
+  <circle cx="32" cy="27" r="7" fill="#ffffff"/>
+  <circle cx="32" cy="26" r="3" fill="#295daa"/>
+</svg>

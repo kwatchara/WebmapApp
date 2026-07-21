@@ -1,0 +1,139 @@
+:root {
+  color-scheme: light dark;
+  --bg: #f5f6f8;
+  --fg: #14151a;
+  --muted: #5c6270;
+  --card-bg: #ffffff;
+  --border: #e3e5ea;
+  --shadow: rgba(0, 0, 0, 0.08) 0 6px 20px -6px;
+  --font: 'Prompt', system-ui, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14151a;
+    --fg: #f3f4f6;
+    --muted: #9ca3af;
+    --card-bg: #1d1f27;
+    --border: #2e303a;
+    --shadow: rgba(0, 0, 0, 0.4) 0 8px 24px -6px;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+#app {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 56px 24px 40px;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.hero h1 {
+  font-size: 44px;
+  margin: 0 0 12px;
+  letter-spacing: -1px;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  flex: 1 1 auto;
+  align-content: start;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--accent, #888);
+  border-radius: 12px;
+  background: var(--card-bg);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.card__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.card__icon {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 auto;
+  border-radius: 10px;
+  padding: 6px;
+  background: color-mix(in srgb, var(--accent, #888) 12%, transparent);
+}
+
+.card__tag {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent, var(--muted));
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.card__title {
+  margin: 0;
+  font-size: 24px;
+}
+
+.card__desc {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.5;
+  flex: 1 1 auto;
+}
+
+.card__cta {
+  font-weight: 600;
+  color: var(--accent, var(--fg));
+}
+
+.foot {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}

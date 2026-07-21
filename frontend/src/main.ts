@@ -1,60 +1,74 @@
-import './style.css'
-import typescriptLogo from './assets/typescript.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import { setupCounter } from './counter.ts'
+import './fonts'
+import './landing.css'
+import leafletIcon from './assets/leaflet-icon.svg'
+import maplibreIcon from './assets/maplibre-icon.svg'
+import cesiumIcon from './assets/cesium-icon.svg'
+
+interface MapExample {
+  href: string
+  name: string
+  tag: string
+  description: string
+  accent: string
+  icon: string
+}
+
+const examples: MapExample[] = [
+  {
+    href: '/leaflet.html',
+    name: 'Leaflet',
+    tag: '2D · Raster tiles',
+    description:
+      'ไลบรารีแผนที่ 2D ยอดนิยม น้ำหนักเบา ใช้ OpenStreetMap raster tiles พร้อม marker และ popup',
+    accent: '#199900',
+    icon: leafletIcon,
+  },
+  {
+    href: '/maplibre.html',
+    name: 'MapLibre GL',
+    tag: '2D/3D · Vector tiles',
+    description:
+      'เรนเดอร์ vector tiles ด้วย WebGL หมุน/เอียงแผนที่ได้ ใช้ MapLibre demo style (ไม่ต้องใช้ API key)',
+    accent: '#295daa',
+    icon: maplibreIcon,
+  },
+  {
+    href: '/cesium.html',
+    name: 'CesiumJS',
+    tag: '3D · Globe',
+    description:
+      'ลูกโลก 3 มิติเต็มรูปแบบบน WebGL วางภาพจาก OpenStreetMap บนทรงกลมโลก (ไม่ต้องใช้ Ion token)',
+    accent: '#eab308',
+    icon: cesiumIcon,
+  },
+]
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-<section id="center">
-  <div class="hero">
-    <img src="${heroImg}" class="base" width="170" height="179">
-    <img src="${typescriptLogo}" class="framework" alt="TypeScript logo"/>
-    <img src="${viteLogo}" class="vite" alt="Vite logo" />
-  </div>
-  <div>
-    <h1>Get started</h1>
-    <p>Edit <code>src/main.ts</code> and save to test <code>HMR</code></p>
-  </div>
-  <button id="counter" type="button" class="counter"></button>
-</section>
+  <header class="hero">
+    <h1>Webmap App</h1>
+    <p class="subtitle">ตัวอย่างการใช้งาน Web Map API แต่ละตัว — เลือกดูได้เลย</p>
+  </header>
 
-<div class="ticks"></div>
+  <main class="grid">
+    ${examples
+      .map(
+        (ex) => `
+      <a class="card" href="${ex.href}" style="--accent:${ex.accent}">
+        <div class="card__head">
+          <img class="card__icon" src="${ex.icon}" alt="${ex.name} icon" width="48" height="48" />
+          <span class="card__tag">${ex.tag}</span>
+        </div>
+        <h2 class="card__title">${ex.name}</h2>
+        <p class="card__desc">${ex.description}</p>
+        <span class="card__cta">เปิดตัวอย่าง →</span>
+      </a>`,
+      )
+      .join('')}
+  </main>
 
-<section id="next-steps">
-  <div id="docs">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#documentation-icon"></use></svg>
-    <h2>Documentation</h2>
-    <p>Your questions, answered</p>
-    <ul>
-      <li>
-        <a href="https://vite.dev/" target="_blank">
-          <img class="logo" src="${viteLogo}" alt="" />
-          Explore Vite
-        </a>
-      </li>
-      <li>
-        <a href="https://www.typescriptlang.org" target="_blank">
-          <img class="button-icon" src="${typescriptLogo}" alt="">
-          Learn more
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div id="social">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#social-icon"></use></svg>
-    <h2>Connect with us</h2>
-    <p>Join the Vite community</p>
-    <ul>
-      <li><a href="https://github.com/vitejs/vite" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#github-icon"></use></svg>GitHub</a></li>
-      <li><a href="https://chat.vite.dev/" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#discord-icon"></use></svg>Discord</a></li>
-      <li><a href="https://x.com/vite_js" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#x-icon"></use></svg>X.com</a></li>
-      <li><a href="https://bsky.app/profile/vite.dev" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#bluesky-icon"></use></svg>Bluesky</a></li>
-    </ul>
-  </div>
-</section>
-
-<div class="ticks"></div>
-<section id="spacer"></section>
+  <footer class="foot">
+    <span>Vite + TypeScript</span>
+    <span>·</span>
+    <span>Leaflet · MapLibre GL · CesiumJS</span>
+  </footer>
 `
-
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)

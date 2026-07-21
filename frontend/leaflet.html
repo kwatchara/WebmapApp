@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leaflet Example — Webmap App</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="back" href="/">← Home</a>
+      <span class="title">Leaflet</span>
+      <label class="province-picker">
+        จังหวัด:
+        <select id="province-select">
+          <option value="">— เลือกจังหวัด —</option>
+        </select>
+      </label>
+      <span class="spacer"></span>
+      <span class="lib">2D · OpenStreetMap raster tiles</span>
+    </header>
+    <div id="map"></div>
+    <script type="module" src="/src/leaflet.ts"></script>
+  </body>
+</html>
