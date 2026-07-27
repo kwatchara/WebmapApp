@@ -8,7 +8,7 @@ __pycache__/
 .ipynb_checkpoints/
 
 # Node
-node_modules/
+# node_modules/ is intentionally tracked in this repo (committed on request)
 
 # Sample / example GIS data (not tracked)
 Example/
